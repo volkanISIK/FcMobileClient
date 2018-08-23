@@ -200,8 +200,8 @@ class FightcadeCilent(ScreenManager):
         self.username = ""
         self.playingagainst = ""
         self.sequence = 0x1
-        self.username = "volkano"
-        self.password = "Ff9tv.com"
+        
+       
 
     def set_state(self, state):
         if state == 'chat_screen':
@@ -610,7 +610,7 @@ class FightcadeCilent(ScreenManager):
 
     def getPlayers(self):
         return [self.players,self.available,self.playing,self.awayfromkb]
-    def login(self,name = "trolling fetish",password = "Ff9tv.com",room="sfa3"):
+    def login(self,name = " ",password = " ",room="sfa3"):
         try:
             self.tcpSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             try:
