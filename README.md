@@ -1,6 +1,6 @@
 # FcMobileClient
 
-This application can connect Fightcade's sfa3 room.
+This application can connect Fightcade's sfa3 room.Only chat purposes...
 
 For more information about Fightcade : https://www.fightcade.com/
 
