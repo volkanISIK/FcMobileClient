@@ -1,0 +1,162 @@
+
+
+<Chat>:
+  BoxLayout:
+    orientation: "vertical"
+    padding:5
+    spacing:5
+    canvas:
+      Color:
+        rgb:1,1/3.0,0,1
+      Rectangle:
+        size:self.size
+        pos:self.pos
+    BoxLayout:
+      size_hint_y: None
+      height:"50dp"
+      spacing:4
+
+      Button:
+        background_normal:"send.png"
+        background_down:"send-pressed.png"
+        size_hint_x: None
+        width:"100dp"
+        #text: "send"
+        font_size:sp(25)
+        on_press:root.manager.sendChat(message.text)
+        on_release:message.text = ""
+        #background_color:[1, 1, 0, 1]
+        #color:2/256,2/256.0,0/256.0,1
+      TextInput:
+        id:message
+        text_size: "50dp"
+        multiline: False
+
+      Button:
+        background_normal:"exit.png"
+        background_down:"exit-pressed.png"
+        size_hint_x: None
+        width:"100dp"
+        #text: "exit"
+        font_size:sp(25)
+        #background_color:226/256.0,4/256.0,4/256.0,1
+        on_release: root.manager.exit()
+
+    ScrollView:
+      bar_width:9
+      bar_inactive_color:[.7, .7, .7, .6]
+      canvas.before:
+        Color:
+          rgb:0,0,1/20.0,1
+        Rectangle:
+          size:self.size
+          pos:self.pos
+      Label:
+        line_height:1
+        spacing:3
+        markup:True
+        size_hint_y: None
+        height: self.texture_size[1]
+        width: self.width
+        text: root.manager.chatLog
+        halign:"left"
+        valign:"bottom"
+        text_size: self.width, None
+        font_size:sp(25)
+        font_name: "Odin Rounded - Bold.otf"
+    ScrollView:
+      bar_width:9
+      bar_inactive_color:[.7, .7, .7, .6]
+      padding:3
+      canvas.before:
+        Color:
+          rgb:214/256,4/256.0,4/256.0,1
+        Rectangle:
+          size:self.size
+          pos:self.pos
+      Label:
+        line_height:1.1
+        markup:True
+        size_hint_y: None
+        height: self.texture_size[1]
+        width: self.width
+        text: root.manager.playerss
+        halign:"left"
+        valign:"bottom"
+        text_size: self.width, None
+        font_size:sp(25)
+        font_name: "Odin Rounded - Bold.otf"
+
+
+
+
+<LoginScreen>:
+
+  BoxLayout:
+    orientation:"vertical"
+    #size_hint_y:0.3
+    #pos:(0,root.width/2)
+    BoxLayout:
+      size_hint_y:None
+      height:dp(80)
+      padding:"10dp"
+      spacing:"10dp"
+      Label:
+        text:"UserName"
+        font_size:20
+
+      TextInput:
+        id:username
+        multiline:False
+        text_size: "18sp"
+
+    BoxLayout:
+      size_hint_y:None
+      height:dp(80)
+      padding:"10dp"
+      spacing:"10dp"
+      Label:
+        text:"Password"
+        font_size:20
+      TextInput:
+        id:password
+        password:True
+        multiline:False
+        text_size: "88sp"
+
+    Button:
+      size_hint_y:None
+      height:dp(50)
+      text:"Log In"
+      font_size:sp(22)
+      #on_press: root.screen_manager.set_state(root.name)
+      on_press: root.manager.baglan(username.text,password.text)
+    Label:
+      id:msg
+      #font_name: 'DroidSansJapanese.ttf'
+      text:root.manager.message
+      font_size:sp(40)
+      valign:"top"
+      color:.9,.1,.2
+      text_size:self.size
+<FightcadeCilent>:
+  #transition: FadeTransition()
+  id: screen_manager
+  screen_manager: screen_manager
+  current:"login_screen"
+  screenChat:screenChat
+  screenLogin:screenLogin
+  pos: root.pos
+  size: root.size
+  Chat:
+    id:screenChat
+    name:"chat_screen"
+    manager:screen_manager
+    size: root.size
+    pos: root.pos
+  LoginScreen:
+    id:screenLogin
+    name:"login_screen"
+    manager:screen_manager
+    size: root.size
+    pos: root.pos
